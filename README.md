@@ -10,4 +10,4 @@ docker build --tag mono .
 ## Run
 docker run --publish 8000:8000 mono
 
-Go to ![http://localhost:8000/](http://localhost:8000/)
+Go to [http://localhost:8000/](http://localhost:8000/)
