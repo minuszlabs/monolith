@@ -4,10 +4,15 @@
 # The Monolith
 TBD..
 
-## Build
-docker build --tag mono .
+## Development:
 
-## Run
-docker run --publish 8000:8000 mono
+### Build
+`docker-compose build`
+
+### Run
+`docker-compose up`
+
+### or just
+`docker-compose up --build`
 
 Go to [http://localhost:8000/](http://localhost:8000/)
