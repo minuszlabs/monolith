@@ -9,6 +9,3 @@ RUN pip install --upgrade \
 
 WORKDIR /usr/src/app
 COPY . .
-
-EXPOSE 8000
-CMD ["./run.sh"]
