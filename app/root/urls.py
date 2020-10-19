@@ -18,11 +18,11 @@ from django.urls import path, include
 from api.base.router import router
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     # Auth
-    path('api-auth/', include('rest_framework.urls')),
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.authtoken')),
+    path("api-auth/", include("rest_framework.urls")),
+    path("auth/", include("djoser.urls")),
+    path("auth/", include("djoser.urls.authtoken")),
     # API
-    path('api/', include(router.urls)),
+    path("api/", include(router.urls)),
 ]
