@@ -1,5 +1,11 @@
 version: '2'
 services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
   monolith:
     build: .
     volumes:
@@ -7,3 +13,5 @@ services:
     ports:
       - "8000:8000"
     command: ./run.sh
+    depends_on:
+      - db
