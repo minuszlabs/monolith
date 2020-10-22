@@ -6,6 +6,12 @@ TBD..
 
 ## Development:
 
+### Setup db:
+1. Go into cointainer `docker-compose run monolith /bin/bash`
+2. `export PYTHONPATH=.`
+3. Migrate users app first `./manage.py makemigrations users` & `./manage.py migrate users`
+4. Run rest of the migrations `./manage.py migrate`
+
 ### Build
 `docker-compose build`
 
