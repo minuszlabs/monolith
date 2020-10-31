@@ -11,3 +11,5 @@ RUN pip install --upgrade \
 
 WORKDIR /usr/src/app
 COPY . .
+
+CMD ["./run.sh"]
