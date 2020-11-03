@@ -17,12 +17,17 @@ from django.contrib import admin
 from django.urls import path, include
 from api.base.router import router
 
-urlpatterns = [
+paths = [
     path("admin/", admin.site.urls),
     # Auth
     path("api-auth/", include("rest_framework.urls")),
     path("auth/", include("djoser.urls")),
     path("auth/", include("djoser.urls.authtoken")),
     # API
-    path("api/", include(router.urls)),
+    path("", include(router.urls)),
+]
+
+# Prefix all monolith API endpoints with an api/ path
+urlpatterns = [
+    path("api/", include(paths))
 ]
