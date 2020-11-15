@@ -1,15 +1,41 @@
 version: '3.7'
 
 services:
+  # Proxy
   middleman:
     image: minusz/middleman:latest
+    container_name: middleman
+    # Shortcut for dev
+    build:
+      context: ../middle_man
     ports:
       - "80:80"
     depends_on:
+      - visualizer
       - monolith
+    networks:
+      - minusz
 
+  # Front-end
+  visualizer:
+    image: minusz/visualizer:latest
+    container_name: visualizer
+    # Shortcut for dev
+    build:
+      context: ../visualizer
+    volumes:
+      - ../visualizer/src:/app/src
+    ports:
+      - "8080:8080"
+    depends_on:
+      - monolith
+    networks:
+      - minusz
+
+  # Back-end
   monolith:
     image: minusz/monolith:latest
+    container_name: monolith
     build:
       context: .
     volumes:
@@ -18,19 +44,27 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    networks:
+      - minusz
 
   db:
     image: postgres:13
-    container_name: minusz-db
+    container_name: db
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
     expose:
       - "5432"
+    networks:
+      - minusz
 
 volumes:
   postgres_data:
 
+networks:
+  minusz:
