@@ -7,7 +7,7 @@ RUN apt-get update
 COPY requirements.txt /usr/src/app/requirements.txt
 
 RUN pip install --upgrade \
-    pip install -r /usr/src/app/requirements.txt
+    pip install --no-cache-dir -r /usr/src/app/requirements.txt
 
 WORKDIR /usr/src/app
 COPY . .
